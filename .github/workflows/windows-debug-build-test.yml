@@ -31,11 +31,12 @@ jobs:
         echo "Repository: ${{ github.repository }}"
         echo "Commit SHA: ${{ github.sha }}"
 
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
-        echo "📦 Installing Windows dependencies..."
-        
-        echo "✅ Windows dependencies installed successfully"
+        echo "📦 Installing Python dependencies..."
+        python -m pip install --upgrade pip
+        pip install jinja2
+        echo "✅ Python dependencies installed successfully"
 
     - name: Configure MSVC
       if: ${{ matrix.preset == 'windows-x86_64-msvc-debug' || matrix.preset == 'windows-x86_64-msvc-noabi-debug' }}
